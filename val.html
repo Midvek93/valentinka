@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Валентинка</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #ffe6f2; /* Light pink background */
+            overflow: hidden; /* Hide scrollbars */
+            position: relative; /* For absolute positioning of hearts */
+            margin: 0; /* Remove default body margin */
+            height: 100vh; /* Cover the entire viewport height */
+        }
+
+        .gif {
+            width: 200px;
+            height: 200px;
+            margin-top: 50px; /* Adjust as needed */
+        }
+
+        #message {
+            font-size: 20px;
+            margin-top: 20px;
+        }
+
+        #buttons {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin: 0 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #ffb3d9; /* Pink button background */
+            color: white;
+        }
+
+        /* Heart styles */
+        .heart {
+            position: absolute;
+            font-size: 20px;
+            color: red;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body>
+    <img class="gif" src="your-cute-gif-url-here.gif" alt="Милая гифка">
+    <p id="message">Давай обнимашки?</p>
+    <div id="buttons">
+        <button onclick="sayYes()">Да</button>
+        <button onclick="sayNo()">Нет</button>
+    </div>
+
+    <script>
+        function sayYes() {
+            alert("Уряяяяя!");
+        }
+
+        function sayNo() {
+            // Действие, которое происходит при нажатии "Нет"
+            // Например, можно скрыть гифку или что-то еще
+        }
+
+        // Function to create a heart
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's'; // Random falling speed
+            heart.style.opacity = Math.random(); // Random opacity
+            heart.style.fontSize = Math.random() * 20 + 10 + 'px'; // Random size
+
+            document.body.appendChild(heart);
+
+            // Remove heart after animation completes (adjust time based on animation duration)
+            setTimeout(() => {
+                heart.remove();
+            }, 5000); // Adjust timeout to match longest animation duration
+        }
+
+        // Create hearts every 100 milliseconds
+        setInterval(createHeart, 100);
+    </script>
+</body>
+</html>
